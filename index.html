@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tarjeta de Presentación</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <style>
+        body {
+            background: linear-gradient(to right, #1a1a2e, #16213e);
+            color: #ffffff;
+            font-family: 'Arial', sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .card {
+            background-color: rgba(45, 55, 72, 0.9);
+            border-radius: 15px;
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.6);
+            max-width: 600px;
+            width: 90%;
+            transition: transform 0.3s, box-shadow 0.3s;
+            position: relative;
+            overflow: hidden;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .cover-img {
+            width: 100%;
+            height: 250px;
+            border-radius: 15px;
+            z-index: 0;
+            position: absolute;
+            top: 0;
+            left: 0;
+            object-fit: cover;
+        }
+
+        .profile-img {
+            width: 160px; /* Aumentado */
+            height: 160px; /* Aumentado */
+            border-radius: 50%;
+            border: 6px solid #e94560; /* Color rojo vibrante */
+            position: relative;
+            margin-top: 120px;
+            z-index: 1;
+            transition: transform 0.3s;
+        }
+
+        .card:hover {
+            transform: scale(1.05);
+            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.7);
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            margin: 10px 0;
+            color: #e94560; /* Color rojo vibrante */
+            animation: fadeIn 1s;
+        }
+
+        h2 {
+            margin: 20px 0 10px;
+            color: #00A1FF; /* Color azul claro */
+            animation: fadeIn 1.5s;
+        }
+
+        .description {
+            font-size: 1rem;
+            margin-top: 10px;
+            color: #b0b0b0;
+            animation: fadeIn 2s;
+        }
+
+        .list-group {
+            list-style: none;
+            padding: 0;
+            margin: 20px 0;
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .list-group li {
+            margin: 10px 15px;
+            animation: fadeIn 2.5s;
+        }
+
+        .list-group a {
+            color: #e94560; /* Color rojo vibrante */
+            text-decoration: none; /* Eliminar subrayado */
+            padding: 15px 25px;
+            border: 2px solid #e94560; /* Borde rojo vibrante */
+            border-radius: 10px;
+            transition: color 0.3s, background-color 0.3s;
+            background: rgba(233, 69, 96, 0.2); /* Fondo semitransparente */
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+        }
+
+        .list-group a:hover {
+            background-color: #e94560; /* Cambiar el color de fondo en hover */
+            color: #ffffff; /* Cambiar el color del texto en hover */
+        }
+
+        .portfolio-container {
+            background: linear-gradient(135deg, #00A1FF, #000000); /* Degradado de azul a negro */
+            border-radius: 10px;
+            padding: 20px;
+            margin: 20px 0;
+            animation: fadeIn 2s;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5); /* Sombra para profundidad */
+        }
+
+        .portfolio-container h2 {
+            color: #ffffff; /* Título en blanco */
+        }
+
+        .contact-bar {
+            display: flex;
+            flex-direction: column;
+            align-items: center; /* Centrado */
+            margin: 20px 0;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            border-radius: 10px;
+            padding: 10px;
+            margin-bottom: 10px;
+            transition: background-color 0.3s;
+            width: 80%; /* Ancho del contenedor */
+            justify-content: center; /* Centrando el contenido */
+            text-decoration: none; /* Eliminar subrayado */
+        }
+
+        .contact-item.whatsapp {
+            background-color: #25D366; /* Fondo verde para WhatsApp */
+        }
+
+        .contact-item.linkedin {
+            background-color: #0A66C2; /* Fondo celeste para LinkedIn */
+        }
+
+        .contact-item.gmail {
+            background-color: #EA4335; /* Fondo rojo para Gmail */
+        }
+
+        .contact-item:hover {
+            opacity: 0.8; /* Cambia la opacidad al pasar el ratón */
+        }
+
+        .contact-icon {
+            font-size: 1.8rem;
+            margin-right: 10px;
+            color: #ffffff; /* Color blanco para el icono */
+        }
+
+        .contact-text {
+            color: #ffffff;
+            font-size: 1.2rem;
+        }
+
+        @media (max-width: 768px) {
+            .profile-img {
+                width: 140px;
+                height: 140px;
+            }
+
+            h1 {
+                font-size: 2rem;
+            }
+
+            h2 {
+                font-size: 1.5rem;
+            }
+
+            .portfolio-container h2 {
+                font-size: 1.5rem;
+            }
+
+            .contact-bar h2 {
+                font-size: 1.5rem;
+            }
+
+            .list-group a {
+                padding: 10px 15px;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .card {
+                padding: 10px;
+            }
+
+            h1 {
+                font-size: 1.5rem;
+            }
+
+            h2 {
+                font-size: 1.2rem;
+            }
+
+            .portfolio-container h2 {
+                font-size: 1.2rem;
+            }
+
+            .contact-bar h2 {
+                font-size: 1.2rem;
+            }
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="card">
+        <img src="cover-image.jpg" alt="Imagen de portada" class="cover-img"> <!-- Cambia a tu imagen de portada -->
+        <img src="Perfil.jpg" alt="Foto de perfil" class="profile-img">
+        <div class="card-header">
+            <h1>Domingo Gonzalez Hernandez</h1>
+            <p class="description">Desarrollador de Software e Inteligencia Artificial</p>
+            <p class="description">Apasionado por el desarrollo de soluciones tecnológicas que transforman ideas en realidades, optimizando procesos y mejorando la experiencia del usuario.</p>
+        </div>
+        <div class="card-body">
+            <div class="portfolio-container">
+                <h2>Portafolio Web</h2>
+                <ul class="list-group">
+                    <li><a href="https://doku566.github.io/domingoghz.github.io/index.html" target="_blank">Portafolio Web</a></li>
+                </ul>
+            </div>
+            <div class="contact-bar">
+                <h2>Contáctame</h2>
+                <a href="https://api.whatsapp.com/send?phone=tu_numero" target="_blank" class="contact-item whatsapp">
+                    <div class="contact-icon"><i class="fab fa-whatsapp"></i></div>
+                    <div class="contact-text">Escríbeme por WhatsApp</div>
+                </a>
+                <a href="https://www.linkedin.com/in/tu_perfil" target="_blank" class="contact-item linkedin">
+                    <div class="contact-icon"><i class="fab fa-linkedin"></i></div>
+                    <div class="contact-text">Escríbeme por LinkedIn</div>
+                </a>
+                <a href="mailto:tu_email@gmail.com" class="contact-item gmail">
+                    <div class="contact-icon"><i class="fas fa-envelope"></i></div>
+                    <div class="contact-text">Escríbeme por Gmail</div>
+                </a>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
